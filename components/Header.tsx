@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SignInButton, SignedOut, UserButton } from "@clerk/nextjs";
+import { ThemeToggler } from "./ThemeToggler";
 
 function Header() {
   return (
@@ -19,6 +20,7 @@ function Header() {
       </Link>
 
       <div className="px-5 flex space-x-2 item-center">
+        <ThemeToggler />
         <UserButton afterSignOutUrl="/" />
         <SignedOut>
           <SignInButton afterSignInUrl="/dashboard" mode="modal" />
