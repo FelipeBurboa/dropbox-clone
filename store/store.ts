@@ -1,11 +1,11 @@
 import {create } from 'zustand';
 
 interface AppState {
-    isDeleteModelOpen: boolean;
-    setIsDeleteModelOpen: (open: boolean) => void;
+    isDeleteModalOpen: boolean;
+    setIsDeleteModalOpen: (open: boolean) => void;
 
-    isRenameModelOpen: boolean;
-    setIsRenameModelOpen: (open: boolean) => void;
+    isRenameModalOpen: boolean;
+    setIsRenameModalOpen: (open: boolean) => void;
 
     fileId:string | null;
     setFileId: (value: string) => void;
@@ -19,8 +19,8 @@ export const useAppStore = create<AppState>()((set) => ({
     setFileId: (fileId:string) => set((state) => ({fileId})),
     filename: "",
     setFilename: (filename:string) => set((state) => ({filename})),
-    isDeleteModelOpen: false,
-    setIsDeleteModelOpen: (open: boolean) => set((state) => ({isDeleteModelOpen: open})),
-    isRenameModelOpen: false,
-    setIsRenameModelOpen: (open: boolean) => set((state) => ({isRenameModelOpen: open})),
+    isDeleteModalOpen: false,
+    setIsDeleteModalOpen: (open: boolean) => set((state) => ({isDeleteModalOpen: open})),
+    isRenameModalOpen: false,
+    setIsRenameModalOpen: (open: boolean) => set((state) => ({isRenameModalOpen: open})),
 }))

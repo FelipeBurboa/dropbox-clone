@@ -1,4 +1,5 @@
 "use client";
+
 import { db, storage } from "@/firebase";
 import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
@@ -12,6 +13,8 @@ import {
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
 import DropzoneComponent from "react-dropzone";
+import toast from "react-hot-toast";
+
 function Dropzone() {
   const [loading, setLoading] = useState(false);
   const { isLoaded, isSignedIn, user } = useUser();
@@ -33,6 +36,7 @@ function Dropzone() {
     if (!user) return;
 
     setLoading(true);
+    const toastId = toast.loading("Uploading...");
     const docRef = await addDoc(collection(db, "users", user.id, "files"), {
       userId: user.id,
       filename: selectedFile.name,
@@ -52,6 +56,7 @@ function Dropzone() {
       });
     });
 
+    toast.success("File uploaded!", { id: toastId });
     setLoading(false);
   };
 
